@@ -36,6 +36,9 @@ public class Queue {
 			arrai = aux;
 			size *=2;
 		}
+		// TEM QUE PASSAR UM NOVO START DUMA FORMA MELHOR AAHAHAHAHA
+		// TEM QUE LEMBRAR QUE O START MUDA DE LUGAR (A LINHA ABAIXO SERVE PRA JOGAR O FIM DA FILA PRO INÍCIO PRA FAZER O ARRAY CIRCULAR)
+		// situação: o array circula com elementos dequeados (o start já não é mais no início do arr). Como prosseguir?
 		if (end == size) end = start;
 		arrai[end] = x;
 		end++;
@@ -43,7 +46,7 @@ public class Queue {
 	
 	public Object dequeue() {
 		start++;
-		return arrai[end+1];
+		return arrai[end-1];
 	}
 	
 	public Object first() {
