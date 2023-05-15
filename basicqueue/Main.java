@@ -29,6 +29,11 @@ public class Main {
 					System.out.println("FIRST: " + myQueue.first());
 					break;
 				}
+				case 0: {
+					sc.close();
+					break;
+				}
+				
 			}
 		}
 		

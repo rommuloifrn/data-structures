@@ -12,7 +12,7 @@ public class Queue {
 		start = new Node(end);
 	}
 	
-	public void mimDaAPilaMano() {
+	public void mimDaAFilaMano() {
 		Node actual = getStart().getNext();
 		System.out.printf("[ ");
 		while (actual!=end) {

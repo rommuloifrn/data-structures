@@ -11,7 +11,7 @@ public class Main {
 		
 		while (true) {
 			System.out.println("1 - enqueue | 2 - dequeue | 3 - first");
-			myQueue.mimDaAPilaMano();
+			myQueue.mimDaAFilaMano();
 			
 			int response = sc.nextInt();
 			
@@ -30,6 +30,10 @@ public class Main {
 				}
 				case 4: {
 					System.out.println(myQueue.size());
+				}
+				case 0: {
+					sc.close();
+					break;
 				}
 			}
 		}
