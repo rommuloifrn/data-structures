@@ -11,7 +11,7 @@ public class Main {
 		DQPile myPile = new DQPile();
 		
 		while (true) {
-			System.out.println("1 - push | 2 - pop ");
+			System.out.println("1 - push | 2 - pop | 3 - top");
 			myPile.mimDaAPilaMano();
 			
 			int response = sc.nextInt();
@@ -23,6 +23,10 @@ public class Main {
 				}
 				case 2: {
 					myPile.pop();
+					break;
+				}
+				case 3: {
+					System.out.println("top: " + myPile.top());
 					break;
 				}
 				case 0: {

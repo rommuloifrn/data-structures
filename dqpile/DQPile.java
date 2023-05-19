@@ -22,7 +22,7 @@ public class DQPile {
 	
 	public Object pop() {
 		int lasting = queueOne.size()-1;
-		for (int i=lasting+1; i>1; i--) {
+		for (int i=lasting; i>0; i--) {
 			queueTwo.enqueue(queueOne.dequeue());
 		}
 		Object judas = queueOne.dequeue();
@@ -30,5 +30,27 @@ public class DQPile {
 			queueOne.enqueue(queueTwo.dequeue());
 		}
 		return judas;
+	}
+	
+	public Object top() {
+		int lasting = queueOne.size()-1;
+		for (int i=lasting; i>0; i--) {
+			queueTwo.enqueue(queueOne.dequeue());
+		}
+		Object judas = queueOne.first();
+		queueTwo.enqueue(queueOne.dequeue());
+		
+		for (int i=lasting+1; i>0; i--) {
+			queueOne.enqueue(queueTwo.dequeue());
+		}
+		return judas;
+	}
+	
+	Integer size() {
+		return queueOne.size();
+	}
+	
+	boolean isEmpty() {
+		return queueOne.isEmpty();
 	}
 }

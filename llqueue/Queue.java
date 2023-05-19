@@ -19,7 +19,7 @@ public class Queue {
 			if (actual.getNext() == end) System.out.printf("%s ", actual); else System.out.printf("%s, ", actual);
 			actual = actual.getNext();
 		}
-		System.out.printf(" ], size: %d, isEmpty: %b %n", size(), isEmpty());
+		System.out.printf("], size: %d, isEmpty: %b %n", size(), isEmpty());
 	}
 	
 	public void enqueue(Object value) {
