@@ -7,7 +7,7 @@ public class DPQueue {
 	Pile pileOne;
 	Pile pileTwo;
 	
-	DPQueue() {
+	public DPQueue() {
 		pileOne = new Pile();
 		pileTwo = new Pile();
 	}
