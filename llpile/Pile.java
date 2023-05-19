@@ -21,7 +21,7 @@ public class Pile {
 				actual = actual.getNext();
 			}
 		}
-		System.out.printf(" ], size: %d, isEmpty: %b%n", size(), isEmpty());
+		System.out.printf("], size: %d, isEmpty: %b%n", size(), isEmpty());
 	}
 	
 	public void push(Object x) {
@@ -50,9 +50,10 @@ public class Pile {
 			return removed;
 		// caso start == end (pilha somente com 1 elemento) 
 		} else {
+			Node toPop = start;
 			start = null;
 			top = null;
-			return null;
+			return toPop;
 		}
 	}
 	
