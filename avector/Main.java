@@ -6,8 +6,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		
-		System.out.println("Me dê o tamanho, o tamanho dessa pilha:");
 		AVector myVector = new AVector();
 		
 		while (true) {
@@ -21,7 +19,7 @@ public class Main {
 					System.out.println(myVector.elemAtRank(sc.nextInt()));
 					break;
 				}
-				case 2: {
+				case 2: { 
 					myVector.replaceAtRank(sc.nextInt(), sc.next());
 					break;
 				}
@@ -30,7 +28,7 @@ public class Main {
 					break;
 				}
 				case 4: {
-					myVector.removeAtRank(sc.nextInt());
+					System.out.printf("removido %s%n", myVector.removeAtRank(sc.nextInt()));
 					break;
 				}
 				case 0: {
