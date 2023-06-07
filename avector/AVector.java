@@ -1,5 +1,7 @@
 package avector;
 
+import exceptions.VectorPequenino;
+
 public class AVector {
 	// Essa implementação, se usada corretamente, mostra índices vazios do array como "null", diferente das outras.
 	private Object[] arrai;
@@ -34,6 +36,7 @@ public class AVector {
 	}
 	
 	public Object replaceAtRank(Integer rank, Object x) {
+		if (rank > size) throw new VectorPequenino("Fora do range, amigão.");
 		Object oldBoy = arrai[rank];
 		arrai[rank] = x;
 		if (oldBoy == null) size++;
@@ -41,7 +44,9 @@ public class AVector {
 	}
 	
 	public void insertAtRank(Integer rank, Object x) {
+		if (rank > size) throw new VectorPequenino("Fora do range, amigão.");
 		if (size == capacity) doubleCap();
+		
 		for (int i=size; i>rank; i--) {
 			arrai[i] = arrai[i-1];
 		}
@@ -55,8 +60,6 @@ public class AVector {
 			if (i == capacity-1) arrai[i] = null; else {
 				arrai[i] = arrai[i+1];
 			}
-			
-			
 		}
 		size--;
 		return judas;
