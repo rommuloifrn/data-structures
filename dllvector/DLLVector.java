@@ -4,7 +4,7 @@ import exceptions.VectorPequenino;
 
 public class DLLVector {
 	DNode start;
-	DNode size;
+	Integer size;
 	
 	public DLLVector() {
 	}
@@ -21,17 +21,61 @@ public class DLLVector {
 	}
 	
 	public Object elemAtRank(Integer rank) {
-		// verificações: se o vector está vazio e se ele tem tamanho pra mostrar o elemento.
+		if (rank>size-1) throw new VectorPequenino("O rank enviado não existe, o vector é muito pequeno.");
+		
 		DNode actual = start;
 		int actualRank = 0;
-		while(actual.getNext()!=null) {
-			if (actualRank == rank) return actual; else {
+		while(actual.getNext() != null) {
+			if (actualRank == rank) return actual.getValue(); else {
 				actual = actual.getNext();
-				rank++;
+				actualRank++;
 			}
 		}
 		throw new VectorPequenino("O rank enviado não existe, o vector é muito pequeno.");
 	}
 	
-	/* SERÁ QUE EU FAÇO UM MÉTODO PRA PERCORRER A LISTA? */
+	
+	
+	public void insertAtRank(Integer rank, Object x) {
+		if (rank>size) throw new VectorPequenino("Fora do range, amigão.");
+		
+		DNode newNode = new DNode(x, null, null);
+		
+		if (isEmpty()) { start = newNode; size++; }
+		else if (rank == size) { atRank(rank).setNext(newNode); size++; }
+		else if (rank == 0) { start.setPrevious(newNode); start = start.getPrevious(); }
+		else { DNode target = atRank(rank); target.get }
+		
+		
+		DNode target = atRank(rank);
+		
+		if (target.getPrevious() == null) {
+			target.setPrevious(newNode);
+			start = newNode;
+			size++;
+		}
+		
+		
+		
+		
+	}
+	
+	public DNode atRank(Integer rank) {
+		if (rank>size-1) throw new VectorPequenino("O rank enviado não existe, o vector é muito pequeno.");
+		
+		DNode actual = start;
+		int actualRank = 0;
+		while(actual.getNext() != null) {
+			if (actualRank == rank) return actual; else {
+				actual = actual.getNext();
+				actualRank++;
+			}
+		}
+		throw new VectorPequenino("O rank enviado não existe, o vector é muito pequeno.");
+	}
+	
+	boolean isEmpty() {
+		return (size<1);
+	}
+	
 }

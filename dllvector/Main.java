@@ -16,6 +16,8 @@ public class Main {
 			
 			switch (response) {
 				case 1: {
+					int x = sc.nextInt();
+					System.out.printf("no rank x: %s", myVector.elemAtRank(x));
 					
 					break;
 				}
