@@ -1,4 +1,4 @@
-package alist;
+package list;
 
 public class DNode {
 	private Object value;

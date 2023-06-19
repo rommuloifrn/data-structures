@@ -1,13 +1,17 @@
-package alist;
+package list;
 
+import exceptions.NaoAcheiEsteTreco;
 import exceptions.TaVazioBicho;
 
-public class AList {
+// TAD lista feito com base em lista duplamente ligada!
+// eu ia chamar de DLLList (double linked list List) mas é um nome chato!
+
+public class List {
 	private Integer size;
 	private DNode start;
 	private DNode end;
 	
-	public AList() {
+	public List() {
 		size = 0;
 		end = new DNode();
 		start = new DNode(end);
@@ -74,28 +78,49 @@ public class AList {
 		DNode novice = new DNode(target.getPrevious(), x, target);
 		target.getPrevious().setNext(novice);
 		target.setPrevious(novice);
+		size++;
 	}
 	
 	public void insertAfter(DNode target, Object x) {
 		DNode novice = new DNode(target, x, target.getNext());
 		target.getNext().setPrevious(novice);
-		target.setPrevious(novice);
+		target.setNext(novice);
+		size++;
 	}
 	
 	public void insertFirst(Object x) {
 		DNode novice = new DNode(start, x, start.getNext());
 		start.getNext().setPrevious(novice);
 		start.setNext(novice);
+		size++;
 	}
 	
 	public void insertLast(Object x) {
 		DNode novice = new DNode(end.getPrevious(), x, end);
 		end.getPrevious().setNext(novice);
 		end.setPrevious(novice);
+		size++;
 	}
 	
-	public void remove(DNode target) {
+	public DNode remove(DNode target) {
 		target.getPrevious().setNext(target.getNext());
 		target.getNext().setPrevious(target.getPrevious());
+		size--;
+		return target;
+		
 	}
+	
+	// métodos auxiliares
+	
+	public DNode getNodeByValue(Object x) {
+		DNode actual = start.getNext();
+		
+		while (actual != end) {
+			// Aprendi coisas legais sobre == e .equals()!!!!!
+			if (actual.getValue().equals(x)) return actual;
+			actual = actual.getNext();
+		}
+		throw new NaoAcheiEsteTreco("Rapaz... Não achei esse ele elemento aí não...");
+	}
+	
 }
