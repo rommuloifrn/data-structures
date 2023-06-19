@@ -14,6 +14,16 @@ public class AList {
 		end.setPrevious(start);
 	}
 	
+	public void mePrintaEssaListaMano() {
+		System.out.printf("[ ");
+		DNode actual = start.getNext();
+		while (actual!= end) {
+			if (actual == last()) System.out.printf("%s ", actual); else System.out.printf("%s, ", actual);
+			actual = actual.getNext();
+		}
+		System.out.printf("], size: %d, isEmpty: %b%n", size(), isEmpty());
+	}
+	
 	public Integer size() {
 		return size;
 	}
