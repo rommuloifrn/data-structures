@@ -12,3 +12,4 @@ Navegue abaixo pelos pacotes:
 - [Vector a partir de lista duplamente ligada](dllvector/DLLVector.java)
 - [Lista a partir de lista duplamente ligada](list/List.java)
 - [Lista a partir de array](alist/AList.java)
+- [Sequência a partir de lista duplamente ligada](dllsequence/DLLSequence.java)
