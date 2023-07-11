@@ -8,17 +8,17 @@ public class Main {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		//DQPile myPile = new DQPile();
+		GTree myTree = new GTree();
 		
 		while (true) {
-			System.out.println("1 - push | 2 - pop | 3 - top");
-			//myPile.mimDaAPilaMano();
+			System.out.println("1 - add | 2 -  | 3 - ");
+			myTree.preOrder(myTree.getRoot());
 			
 			int response = sc.nextInt();
 			
 			switch (response) {
 				case 1: {
-					
+					myTree.add(null, myTree);
 					break;
 				}
 				case 2: {

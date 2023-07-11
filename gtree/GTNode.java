@@ -1,13 +1,15 @@
 package gtree;
 
-import list.List;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class GTNode {
 	private Object value;
-	private List childs;
+	private ArrayList<GTNode> childs;
 	
 	public GTNode(Object value) {
 		this.value = value;
+		childs = new ArrayList<GTNode>();
 	}
 	
 	public Object getValue() {
@@ -18,11 +20,15 @@ public class GTNode {
 		this.value = value;
 	}
 
-	public List getChilds() {
+	public ArrayList<GTNode> getChilds() {
 		return childs;
 	}
+	
+	public Iterator<GTNode> getChildsIt() {
+		return childs.iterator();
+	}
 
-	public void setChilds(List childs) {
+	public void setChilds(ArrayList<GTNode> childs) {
 		this.childs = childs;
 	}
 }
