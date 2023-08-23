@@ -9,10 +9,14 @@ public class GTree {
 		this.root = new GTNode(null);
 	}
 	
-	public void preOrder(GTNode x) {
-		System.out.printf("%s\n", x.getValue());
-		while (x.getChildsIt().hasNext()) {
-			preOrder(x.getChildsIt().next());
+	public void preOrder(GTNode x, int depth) { // o que o Iterator.next() faz eh retornar o elemento atual e acessar o próximo.
+		/* Uma coisa que eh interessante notar aqui eh que é necessário armazenar o iterador em uma variável (aqui usei a "it").
+		 * Isso acontece pois se você ficar acessando o iterator pelo método a partir do nó, o estado dele nunca vai mudar, os retornos do "next()", por exemplo, serão sempre
+		 * os mesmos e vai gerar um loop infinito. */
+		depthPrinter(depth); System.out.printf("%s\n", x.getValue()); 
+ 		Iterator<GTNode> it = x.getChildsIt();
+		while (it.hasNext()) {
+			preOrder(it.next(), depth+1);
 		}
 	}
 	
@@ -21,22 +25,39 @@ public class GTree {
 	}
 	
 	public void add(GTNode target, Object x) {
-		if (root == null) root.setValue(x); else {
+		if (root.getValue() == null) root.setValue(x); else {
 			target.getChilds().add(new GTNode(x));
 		}
 	}
 	
-	/* inicio de preorder com impressao
-	public void spacer(int space) {
-		for (int i=0; i < space; i++) System.out.printf(" ");
+	
+	// métodos auxiliares
+	
+	public void depthPrinter(int depth) {
+		for (int i=depth; i!=0; i--)
+			System.out.printf("   ");
 	}
-	public void preOrder(GTNode x) { preOrder(x, -3); }
-	public void preOrder(GTNode x, int spacing) {
-		System.out.printf("%s", x.getValue());
-		spacer(spacing+3);
-		for (int i; i<x.getChilds().size(); i++)
-			preOrder()
+	
+	public GTNode getNodeByString(GTNode x, String s) {
+		// Iterator<GTNode> it = node.getChildsIt()
+		if (s == "" || root.getValue() == null) return root;
+		
+		Iterator<GTNode> it = x.getChildsIt();
+		if (x.getValue().equals(s)) return x;
+		
+		else {
+			while ( it.hasNext() ) { //getNodeByString(it.next(), s);
+				GTNode actual = it.next();
+				GTNode wtf = getNodeByString(actual, s); 
+				if (wtf != null) return wtf;
+			}
+			return null;
+			// como q trata exceçao em backtracking? aehaueuheuahuehu
+		}
+		// o throw de excecao tava sendo ativado sempre. procura no root -> procura em filho do root -> lança o throw abaixo depois de procurar no filho do root. Acho que consegui achar o problema.
+		// acho que nao eh bom que ele taque exceçao, se nao cada nó que nao tiver filho com o value igual a string vai tacar exceçao.
 		
 	}
-	*/
+	
+	
 }

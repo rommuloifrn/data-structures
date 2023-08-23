@@ -12,13 +12,13 @@ public class Main {
 		
 		while (true) {
 			System.out.println("1 - add | 2 -  | 3 - ");
-			myTree.preOrder(myTree.getRoot());
+			myTree.preOrder(myTree.getRoot(), 0);
 			
 			int response = sc.nextInt();
 			
 			switch (response) {
 				case 1: {
-					myTree.add(null, myTree);
+					myTree.add(myTree.getNodeByString(myTree.getRoot(), sc.next()), sc.next());
 					break;
 				}
 				case 2: {
