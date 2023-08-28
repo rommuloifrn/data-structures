@@ -11,14 +11,18 @@ public class Main {
 		GTree myTree = new GTree();
 		
 		while (true) {
+			System.out.println("-------------------------------------");
 			System.out.println("1 - add | 2 -  | 3 - ");
-			myTree.preOrder(myTree.getRoot(), 0);
+			myTree.printaEssaTree();
 			
 			int response = sc.nextInt();
 			
 			switch (response) {
 				case 1: {
-					myTree.add(myTree.getNodeByString(myTree.getRoot(), sc.next()), sc.next());
+					if ( myTree.isEmpty() )
+						myTree.addRoot(sc.next());
+					else
+						myTree.add(myTree.getNodeByString(myTree.getRoot(), sc.next()), sc.next());
 					break;
 				}
 				case 2: {

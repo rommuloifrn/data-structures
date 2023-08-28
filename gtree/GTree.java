@@ -6,22 +6,34 @@ public class GTree {
 	private GTNode root;
 	
 	public GTree() {
-		this.root = new GTNode(null);
+		//this.root = new GTNode(null);
 	}
 	
-	public void preOrder(GTNode x, int depth) { // o que o Iterator.next() faz eh retornar o elemento atual e acessar o próximo.
+	public void printaEssaTree() {
+		if (root==null) System.out.println("Está vazia!"); 
+		else {
+		preOrderPrint(root, 0);
+		System.out.printf("\nsize: %d\n", size(root));
+		}
+	}
+	
+	public void preOrderPrint(GTNode x, int depth) { // o que o Iterator.next() faz eh retornar o elemento atual e acessar o próximo.
 		/* Uma coisa que eh interessante notar aqui eh que é necessário armazenar o iterador em uma variável (aqui usei a "it").
 		 * Isso acontece pois se você ficar acessando o iterator pelo método a partir do nó, o estado dele nunca vai mudar, os retornos do "next()", por exemplo, serão sempre
 		 * os mesmos e vai gerar um loop infinito. */
-		depthPrinter(depth); System.out.printf("%s\n", x.getValue()); 
+		depthPrinter(depth); System.out.printf("%s", x.getValue()); if (isRoot(x)) System.out.printf(" (root)\n"); else System.out.printf("\n");
  		Iterator<GTNode> it = x.getChildsIt();
 		while (it.hasNext()) {
-			preOrder(it.next(), depth+1);
+			preOrderPrint(it.next(), depth+1);
 		}
 	}
 	
 	public GTNode getRoot() {
 		return root;
+	}
+	
+	public void addRoot(Object x) {
+		root = new GTNode(x);
 	}
 	
 	public void add(GTNode target, Object x) {
@@ -30,6 +42,34 @@ public class GTree {
 		}
 	}
 	
+	public boolean isEmpty() {
+		return root==null;
+	}
+	
+	public Integer size(GTNode x) {
+		if (x.getValue() == null) return 0;
+		Iterator<GTNode> it = x.getChildsIt();
+		
+		int size = 1;
+		while (it.hasNext()) {
+			size += size(it.next());
+		}
+		return size;	
+	}
+	
+	public Integer height(GTNode x) {
+		if (x == null) return 0;
+		Iterator<GTNode> it = x.getChildsIt();
+		int height = 1;
+		int childHeight = 0;
+		while(it.hasNext()) {
+			if ( height(it.next())>childHeight ) childHeight = \
+		}
+	}
+	
+	public boolean isRoot(GTNode x) {
+		return (root == x);
+	}
 	
 	// métodos auxiliares
 	
@@ -39,7 +79,6 @@ public class GTree {
 	}
 	
 	public GTNode getNodeByString(GTNode x, String s) {
-		// Iterator<GTNode> it = node.getChildsIt()
 		if (s == "" || root.getValue() == null) return root;
 		
 		Iterator<GTNode> it = x.getChildsIt();
