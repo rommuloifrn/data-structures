@@ -13,7 +13,7 @@ public class GTree {
 		if (root==null) System.out.println("Está vazia!"); 
 		else {
 		preOrderPrint(root, 0);
-		System.out.printf("\nsize: %d\n", size(root));
+		System.out.printf("\nsize: %d, height: %d\n", size(root), height(root));
 		}
 	}
 	
@@ -59,12 +59,18 @@ public class GTree {
 	
 	public Integer height(GTNode x) {
 		if (x == null) return 0;
-		Iterator<GTNode> it = x.getChildsIt();
-		int height = 1;
-		int childHeight = 0;
-		while(it.hasNext()) {
-			if ( height(it.next())>childHeight ) childHeight = \
-		}
+		Iterator<GTNode> it = x.getChildsIt(); // a cada execução, retorna 1 ate nao ter mais filho.
+		
+		if (it.hasNext()) {
+			int height = height(it.next());
+			
+			while (it.hasNext()) {
+				int nextHeight = height(it.next());
+				if (nextHeight>height) height = nextHeight;
+			}
+			return 1 + height;
+			
+		} else return 1;
 	}
 	
 	public boolean isRoot(GTNode x) {
