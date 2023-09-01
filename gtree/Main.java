@@ -12,7 +12,7 @@ public class Main {
 		
 		while (true) {
 			System.out.println("-------------------------------------");
-			System.out.println("1 - add | 2 -  | 3 - ");
+			System.out.println("1 - add | 2 -  | 3 - | 4 - printElements");
 			myTree.printaEssaTree();
 			
 			int response = sc.nextInt();
@@ -31,6 +31,10 @@ public class Main {
 				}
 				case 3: {
 					
+					break;
+				}
+				case 4: {
+					myTree.printElements();
 					break;
 				}
 				case 0: {
