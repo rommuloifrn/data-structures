@@ -1,6 +1,5 @@
 package gtree;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 public class GTree {
@@ -9,7 +8,6 @@ public class GTree {
 	public GTree() {
 		//this.root = new GTNode(null);
 	}
-	
 	
 	public void printaEssaTree() {
 		if (root==null) System.out.println("Está vazia!"); 
@@ -30,7 +28,6 @@ public class GTree {
 		}
 	}
 	
-	
 	public GTNode getRoot() {
 		return root;
 	}
@@ -45,7 +42,9 @@ public class GTree {
 		}
 	}
 	
-	
+	public boolean isEmpty() {
+		return root==null;
+	}
 	
 	public Integer size(GTNode x) {
 		if (x.getValue() == null) return 0;
@@ -73,35 +72,6 @@ public class GTree {
 			
 		} else return 1;
 	}
-	
-	public boolean isEmpty() {
-		return root==null;
-	}
-	
-	public void printElements() {
-		Iterator<Object> it = elements();
-		System.out.printf("[ ");
-		while (it.hasNext()) {
-			System.out.printf("%s, ", it.next());
-		}
-		System.out.printf("]\n");
-	}
-	
-	public Iterator<Object> elements() {
-		ArrayList<Object> arr = new ArrayList<Object>();
-		preOrderElements(root, arr);
-		return arr.iterator();
-	}
-	
-	public void preOrderElements(GTNode x, ArrayList<Object> arr) {
-		arr.add(x.getValue());
-		Iterator<GTNode> childsIt = x.getChildsIt();
-		while (childsIt.hasNext()) {
-			preOrderElements(childsIt.next(), arr);
-		}
-		
-	}
-	
 	
 	public boolean isRoot(GTNode x) {
 		return (root == x);
