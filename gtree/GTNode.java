@@ -24,7 +24,7 @@ public class GTNode {
 		return childs;
 	}
 	
-	public Iterator<GTNode> getChildsIt() {
+	public Iterator<GTNode> getChildrenIt() {
 		return childs.iterator();
 	}
 

@@ -12,7 +12,7 @@ public class Main {
 		
 		while (true) {
 			System.out.println("-------------------------------------");
-			System.out.println("1 - add | 2 -  | 3 - | 4 - printElements");
+			System.out.println("1 - add | 2 -  | 3 - parent | 4 - printElements | 5 - isInternal | 6 - depth");
 			myTree.printaEssaTree();
 			
 			int response = sc.nextInt();
@@ -22,7 +22,7 @@ public class Main {
 					if ( myTree.isEmpty() )
 						myTree.addRoot(sc.next());
 					else
-						myTree.add(myTree.getNodeByString(myTree.getRoot(), sc.next()), sc.next());
+						myTree.add(myTree.getNodeByString(myTree.root(), sc.next()), sc.next());
 					break;
 				}
 				case 2: {
@@ -30,11 +30,20 @@ public class Main {
 					break;
 				}
 				case 3: {
-					
+					GTNode node = myTree.getNodeByString(myTree.root(), sc.next());
+					System.out.printf("%s\n", myTree.parent(node).getValue());
 					break;
 				}
 				case 4: {
 					myTree.printElements();
+					break;
+				}
+				case 5: {
+					System.out.println(myTree.isInternal(myTree.getNodeByString(myTree.root(), sc.next())));
+					break;
+				}
+				case 6: {
+					System.out.println(myTree.height(myTree.getNodeByString(myTree.root(), sc.next())));
 					break;
 				}
 				case 0: {
