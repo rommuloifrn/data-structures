@@ -12,7 +12,7 @@ public class Main {
 		
 		while (true) {
 			System.out.println("-------------------------------------");
-			System.out.println("1 - add | 2 -  | 3 - parent | 4 - printElements | 5 - isInternal | 6 - depth");
+			System.out.println("1 - add | 2 -  | 3 - parent | 4 - printElements | 5 - isInternal | 6 - depth | 7 - replace");
 			myTree.printaEssaTree();
 			
 			int response = sc.nextInt();
@@ -43,7 +43,11 @@ public class Main {
 					break;
 				}
 				case 6: {
-					System.out.println(myTree.height(myTree.getNodeByString(myTree.root(), sc.next())));
+					System.out.println(myTree.depth(myTree.getNodeByString(myTree.root(), sc.next())));
+					break;
+				}
+				case 7: {
+					myTree.replace(myTree.getNodeByString(myTree.root(), sc.next()), sc.next());
 					break;
 				}
 				case 0: {

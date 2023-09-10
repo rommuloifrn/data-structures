@@ -138,18 +138,22 @@ public class GTree {
 	public int depth(GTNode x) {
 		return depthPreOrder(x, root, 0);
 	}
-	
 	public Integer depthPreOrder(GTNode target, GTNode x, int depth) {
 		if (x == target) return depth;
  		Iterator<GTNode> it = x.getChildrenIt();
  		
 		while (it.hasNext()) {
-			Integer searchDeeper = depthPreOrder(target, it.next(), depth+1);
-			if (searchDeeper != null) return searchDeeper;
+			Integer next = depthPreOrder(target, it.next(), depth+1);
+			if (next != null) return next;
 		}
 		return null;
 	}
 	
+	public Object replace(GTNode target, Object x) {
+		Object aux = target.getValue();
+		target.setValue(x);
+		return aux;
+	}
 	
 	// métodos auxiliares
 	
