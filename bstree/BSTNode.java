@@ -22,12 +22,6 @@ public class BSTNode {
 	
 	
 	
-	
-	
-	
-	
-	
-	
 
 	public BSTNode getParent() {
 		return parent;
