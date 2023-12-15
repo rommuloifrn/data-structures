@@ -29,28 +29,28 @@ public class HashTable implements HashTableInterface {
 		
 		if (arr[x%11] == null) {
 			arr[x%11] = x;
-		} else { // tratamento da colisão
-			if (usesDoubleHash) { // hash duplo
-				int q = 7;
-				int i = q-x%q;
-				while (arr[i] != null) {
-					if (i == size-1) i = 0;
-					else i++;
-				}
-				arr[i] = x;
-			} else { // linear probing
-				int i = x%7;
-				while (arr[i] != null) {
-					if (i == size-1) i = 0;
-					else i++;
-				}
-				arr[i] = x;
-					
+		} else if (usesDoubleHash) { // tratamento de colisão: hash duplo
+			int q = 11;
+			int i = q-x%q;
+			if (arr[i] != null) {
+				i = q + 2%cap; // segundo hash
 				
+				while (arr[i] != null) {
+					if (i == size-1) i = 0;
+					else i++;
+				}
 			}
+			arr[i] = x;
+		} else { // tratamento de colisão: linear probing
+			int i = x%7;
+			while (arr[i] != null) {
+				if (i == size-1) i = 0;
+				else i++;
+			}
+			arr[i] = x;
+				
+			
 		}
-		
-		
 		
 		
 		size++;
