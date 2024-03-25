@@ -1,15 +1,15 @@
-package dqpile;
+package piles;
 
-import llqueue.Queue;
+import queues.LinkedListQueue;
 
-public class DQPile {
+public class DoubleQueuePile {
 	// Pilha de duas filas usando filas de lista ligada!
-	Queue queueOne;
-	Queue queueTwo;
+	LinkedListQueue queueOne;
+	LinkedListQueue queueTwo;
 	
-	public DQPile() {
-		queueOne = new Queue();
-		queueTwo = new Queue();
+	public DoubleQueuePile() {
+		queueOne = new LinkedListQueue();
+		queueTwo = new LinkedListQueue();
 	}
 	
 	public void mimDaAPilaMano() {

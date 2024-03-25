@@ -1,13 +1,14 @@
-package llqueue;
+package queues;
 
 import exceptions.PilhaVaziaException;
+import nodes.Node;
 
-public class Queue {
+public class LinkedListQueue {
 	// estou usando sentinelas!
 	private Node start;
 	private Node end;
 	
-	public Queue() {
+	public LinkedListQueue() {
 		end = new Node();
 		start = new Node(end);
 	}

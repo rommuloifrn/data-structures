@@ -2,13 +2,15 @@ package llpile;
 
 import java.util.Scanner;
 
+import piles.LinkedListPile;
+
 public class Main {
 
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		Pile myPile = new Pile();
+		LinkedListPile myPile = new LinkedListPile();
 		
 		while (true) {
 			System.out.println("1 - push | 2 - pop ");

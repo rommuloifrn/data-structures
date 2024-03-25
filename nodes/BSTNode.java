@@ -1,4 +1,4 @@
-package bstree;
+package nodes;
 
 import java.util.ArrayList;
 import java.util.Iterator;

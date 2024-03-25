@@ -1,15 +1,14 @@
-## Data Structures subject files
-### Arquivos da matéria de Estrutura de Dados
-Aqui estão implementações feitas na matéria de Estruturas de Dados, em formato de projeto da IDE Eclipse. 
-Cada pacote é uma implementação, com uma classe Main que permite fazer as operações desejadas e testar o programa da forma que quiser.
-Navegue abaixo pelos pacotes:
+## Data Structures
+Implementations from Data Structures subject
 
-#### Lista de TAD´s (Tipo Abstrato de Dados):
-- [Pilha rubro negra](redblackpile/RBPile.java) (pilha dupla convergente)
-- [Pilha a partir de lista ligada](llpile/Pile.java)
-- [Fila a partir de lista ligada](llqueue/Queue.java)
-- [Vector a partir de array](avector/AVector.java)
-- [Vector a partir de lista duplamente ligada](dllvector/DLLVector.java)
-- [Lista a partir de lista duplamente ligada](list/List.java)
-- [Lista a partir de array](alist/AList.java)
-- [Sequência a partir de lista duplamente ligada](dllsequence/DLLSequence.java)
+[Intefaces](interfaces/)
+
+#### Nav:
+- [RedBlack Pile](redblackpile/RBPile.java) (pilha dupla convergente)
+- [Pile using linked list](llpile/Pile.java)
+- [Queue using linked list](llqueue/Queue.java)
+- [Vector using array](avector/AVector.java)
+- [Vector using double linked list](dllvector/DLLVector.java)
+- [List using double linked list](list/List.java)
+- [List using array](alist/AList.java)
+- [Sequence using double linked list](dllsequence/DLLSequence.java)

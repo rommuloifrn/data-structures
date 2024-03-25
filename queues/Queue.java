@@ -1,4 +1,4 @@
-package basicqueue;
+package queues;
 
 public class Queue {
 	private Object arrai[];

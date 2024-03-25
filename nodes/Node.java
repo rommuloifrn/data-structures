@@ -1,4 +1,4 @@
-package llqueue;
+package nodes;
 
 public class Node {
 	private Object value;

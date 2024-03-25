@@ -2,11 +2,13 @@ package avector;
 
 import java.util.Scanner;
 
+import collections.ArrayVector;
+
 public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		AVector myVector = new AVector();
+		ArrayVector myVector = new ArrayVector();
 		
 		while (true) {
 			System.out.println("1 - elemAtRank | 2 - replaceAtRank | 3 - InsertAtRank | 4 - removeAtRank // size, isEmpty");

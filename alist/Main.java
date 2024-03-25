@@ -2,11 +2,13 @@ package alist;
 
 import java.util.Scanner;
 
+import collections.ArrayList;
+
 public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		AList myList = new AList();
+		ArrayList myList = new ArrayList();
 		
 		while (true) {
 			System.out.printf("1 - first | 2 - last | 3 - before | 4 - after | 5 - replaceElement |%n 6 - swapElements | 7 - insertBefore | 8 - insertAfter | 9 - insertFirst | 10 - insertLast | 11 - remove%n");
