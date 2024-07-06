@@ -1,15 +1,18 @@
-## Data Structures subject files
-### Arquivos da matéria de Estrutura de Dados
-Aqui estão implementações feitas na matéria de Estruturas de Dados, em formato de projeto da IDE Eclipse. 
-Cada pacote é uma implementação, com uma classe Main que permite fazer as operações desejadas e testar o programa da forma que quiser.
-Navegue abaixo pelos pacotes:
+### Arquivos da matéria Estruturas de Dados I e II (quando eu chegar lá)
 
-#### Lista de TAD´s (Tipo Abstrato de Dados):
-- [Pilha rubro negra](redblackpile/RBPile.java) (pilha dupla convergente)
-- [Pilha a partir de lista ligada](llpile/Pile.java)
-- [Fila a partir de lista ligada](llqueue/Queue.java)
-- [Vector a partir de array](avector/AVector.java)
-- [Vector a partir de lista duplamente ligada](dllvector/DLLVector.java)
-- [Lista a partir de lista duplamente ligada](list/List.java)
-- [Lista a partir de array](alist/AList.java)
-- [Sequência a partir de lista duplamente ligada](dllsequence/DLLSequence.java)
+![](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+
+Aqui estão as implementações dos TADs (Tipo Abstrato de Dados) feitas na matéria Estruturas de Dados. <br>
+Cada pacote é uma implementação, com uma classe Main que provê uma pequena interface CLI com as operações possíveis dentro daquela estrutura.
+
+Navegue abaixo pelos TADs:
+
+- [Pilha rubro negra](redblackpile/RBPile.java) (array)
+- [Pilha](llpile/Pile.java) (lista ligada)
+- [Fila](llqueue/Queue.java) (lista ligada)
+- [Vector](avector/AVector.java) (array)
+- [Vector](dllvector/DLLVector.java) (lista duplamente ligada)
+- [Lista](list/List.java) (lista ligada)
+- [Lista](alist/AList.java) (array)
+- [Sequência](dllsequence/DLLSequence.java) (lista duplamente ligada)
+- [Árvore genérica](gtree/GTree.java)
