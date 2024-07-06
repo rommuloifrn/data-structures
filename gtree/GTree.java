@@ -1,9 +1,7 @@
-package trees;
+package gtree;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import nodes.GTNode;
 
 public class GTree {
 	private GTNode root;

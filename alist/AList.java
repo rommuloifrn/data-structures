@@ -1,6 +1,5 @@
-package collections;
+package alist;
 
-import alist.Position;
 import exceptions.NaoAcheiEsteTreco;
 import exceptions.NemTemNadaAiRapaz;
 import exceptions.TaVazioBicho;
@@ -10,13 +9,13 @@ import exceptions.TaVazioBicho;
  *  Aumento e redução dinâmicos de capacidade, 
  *  possibilidade de buscar os Positions por índice ou por valor (string) */
 
-public class ArrayList {
+public class AList {
 	Position[] arrai;
 	Integer size;
 	Integer cap;
 	boolean getPositionsByRank;
 	
-	public ArrayList() {
+	public AList() {
 		size = 0;
 		cap = 2;
 		arrai = new Position[cap];

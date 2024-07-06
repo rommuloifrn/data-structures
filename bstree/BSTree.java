@@ -1,9 +1,7 @@
-package trees;
+package bstree;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import nodes.BSTNode;
 
 public class BSTree {
 	private BSTNode root;

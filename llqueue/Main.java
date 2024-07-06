@@ -2,14 +2,12 @@ package llqueue;
 
 import java.util.Scanner;
 
-import queues.LinkedListQueue;
-
 public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		LinkedListQueue myQueue = new LinkedListQueue();
+		Queue myQueue = new Queue();
 		
 		while (true) {
 			System.out.println("1 - enqueue | 2 - dequeue | 3 - first");

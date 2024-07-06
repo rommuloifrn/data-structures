@@ -2,8 +2,6 @@ package dpqueue;
 
 import java.util.Scanner;
 
-import queues.DPQueue;
-
 public class Main {
 
 	public static void main(String[] args) {
@@ -19,11 +17,11 @@ public class Main {
 			
 			switch (response) {
 				case 1: {
-					myQueue.push(sc.next());
+					myQueue.enqueue(sc.next());
 					break;
 				}
 				case 2: {
-					myQueue.pop();
+					myQueue.dequeue();
 					break;
 				}
 				case 3: {

@@ -1,4 +1,4 @@
-package nodes;
+package gtree;
 
 import java.util.ArrayList;
 import java.util.Iterator;

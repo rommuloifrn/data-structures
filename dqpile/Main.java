@@ -2,15 +2,13 @@ package dqpile;
 
 import java.util.Scanner;
 
-import piles.DoubleQueuePile;
-
 public class Main {
 
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		DoubleQueuePile myPile = new DoubleQueuePile();
+		DQPile myPile = new DQPile();
 		
 		while (true) {
 			System.out.println("1 - push | 2 - pop | 3 - top");

@@ -1,34 +1,26 @@
-package queues;
-import exceptions.PilhaVaziaException;
-import piles.LinkedListPile;
+package dpqueue;
+import llpile.Pile;
 
-public class DPQueue implements IQueue {
+public class DPQueue {
 	// eh um pouco triste não ter chegado na solução sozinho, grande xavião me deu a solução e eu só vou implementar :c
 	// Fila de dupla-pilha usando pilhas de lista ligada!
-	LinkedListPile pileOne;
-	LinkedListPile pileTwo;
+	Pile pileOne;
+	Pile pileTwo;
 	
 	public DPQueue() {
-		pileOne = new LinkedListPile();
-		pileTwo = new LinkedListPile();
+		pileOne = new Pile();
+		pileTwo = new Pile();
 	}
 	
 	public void mimDaAFilaMano() {
 		pileOne.mimDaAPilaMano();
 	}
 	
-	public void push(Object x) {
+	void enqueue(Object x) {
 		pileOne.push(x);
 	}
 	
-	public Object top() {
-		if (isEmpty()) return new PilhaVaziaException("Vazio, mano.");
-		Object ximbas = pileOne.pop();
-		pileOne.push(ximbas);
-		return ximbas; 
-	}
-	
-	public Object pop() {
+	Object dequeue() {
 		int lasting = pileOne.size()-1;
 		while (pileOne.size()>1) {
 			pileTwo.push(pileOne.pop());
@@ -42,7 +34,7 @@ public class DPQueue implements IQueue {
 		return judas;
 	};
 	
-	public Object first() {
+	Object first() {
 		int lasting = pileOne.size()-1;
 		while (pileOne.size()!=1) {
 			pileTwo.push(pileOne.pop());
@@ -57,11 +49,11 @@ public class DPQueue implements IQueue {
 		return judas;
 	};
 	
-	public int size() {
+	Integer size() {
 		return 1;
 	}
 	
-	public boolean isEmpty() {
+	boolean isEmpty() {
 		return pileOne.isEmpty();
 	}
 }

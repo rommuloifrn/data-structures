@@ -1,14 +1,14 @@
-package piles;
+package llpile;
 
 import exceptions.PilhaVaziaException;
-import nodes.Node;
+import llqueue.Node;
 
-public class LinkedListPile {
+public class Pile {
 	// Eu não estou usando sentinela!
 	private Node start;
 	private Node top;
 	
-	public LinkedListPile() {
+	public Pile() {
 	}
 	
 	public void mimDaAPilaMano() {

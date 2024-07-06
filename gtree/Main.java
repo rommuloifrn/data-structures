@@ -1,8 +1,6 @@
-package trees;
+package gtree;
 
 import java.util.Scanner;
-
-import nodes.GTNode;
 
 public class Main {
 

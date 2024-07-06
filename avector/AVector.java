@@ -1,15 +1,15 @@
-package collections;
+package avector;
 
 import exceptions.VectorPequenino;
 
-public class ArrayVector {
+public class AVector {
 	// Essa implementação, se usada corretamente, mostra índices vazios do array como "null", diferente das outras.
 	// Sugiro ignorar o comentário acima pois isso daqui precisa de revisão. Mas via de regra, funciona ¯\_(ツ)_/¯
 	private Object[] arrai;
 	private Integer capacity;
 	private Integer size;
 	
-	public ArrayVector() {
+	public AVector() {
 		arrai = new Object[10];
 		capacity = 3;
 		size = 0;

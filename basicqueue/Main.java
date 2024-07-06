@@ -2,8 +2,6 @@ package basicqueue;
 
 import java.util.Scanner;
 
-import queues.Queue;
-
 public class Main {
 
 	public static void main(String[] args) {
