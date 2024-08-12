@@ -6,7 +6,7 @@ public class HashTable implements HashTableInterface {
 	private final Integer initialCap = 16;
 	private boolean usesDoubleHash;
 	
-	private Integer[] arr;
+	private Object[] arr;
 	private Integer cap;
 	private Integer size;
 	
@@ -23,14 +23,18 @@ public class HashTable implements HashTableInterface {
 		}
 		return NO_SUCH_KEY;
 	}
+
+	public void rehash() { // apos aumentar o tamanho do array ela redistribui as chaves
+
+	}
 	
 	public Integer insertItem(Integer x) {
 		if (size == cap-1) doubleCap();
 		
-		if (arr[x%11] == null) {
-			arr[x%11] = x;
+		if (arr[x%size] == null) {
+			arr[x%size] = x;
 		} else if (usesDoubleHash) { // tratamento de colisão: hash duplo
-			int q = 11;
+			int q = size;
 			int i = q-x%q;
 			if (arr[i] != null) {
 				i = q + 2%cap; // segundo hash
@@ -61,7 +65,7 @@ public class HashTable implements HashTableInterface {
 		System.out.println("aAAAAAAAAAAAAAAAAAAAAA!");
 		for (int i=0; i<cap; i++) {
 			if (arr[i] == key) {
-				Integer temp = arr[i];
+				Integer temp = (Integer) arr[i];
 				System.out.println("um!");
 				arr[i] = null;
 				System.out.println("dois!!");
@@ -80,14 +84,14 @@ public class HashTable implements HashTableInterface {
 		return (size==0);
 	}
 	
-	public Integer[] keys() {
+	public Object[] keys() {
 		return arr;
 	}
 	
 	// métodos auxiliares
 	
 	private void doubleCap() {
-		Integer [] aux = new Integer[cap*2];
+		Object [] aux = new Integer[cap*2];
 		for(int i=0; i<size; i++) {
 			aux[i] = arr[i];
 		}

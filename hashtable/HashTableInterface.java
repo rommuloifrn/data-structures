@@ -11,5 +11,5 @@ public interface HashTableInterface {
 	
 	Boolean isEmpty();
 	
-	Integer[] keys();
+	Object[] keys();
 }
