@@ -60,8 +60,22 @@ Dessa forma, nosso algoritmo de pesquisa vai precisar iterar sobre todos os elem
 
 ### 3.2.1 Linear probing
 
+Linear probing consiste em deslocar o elemento para o índice seguinte.
+
+------ imagem
+
+Até aí tudo bem, porém surge um problema: Com o tempo, a busca <u>degenera</u>. Imagine que, se você sempre trata a colisão deslocando um elemento pra esquerda, <u>a busca pode precisar checar todos os elementos seguintes até achar a chave pesquisada.</u> Pra evitar isso, precisamos garantir que o array não fique muito cheio, sempre mantendo o preenchimento abaixo de 50% aumentando o tamanho.
+
+------ imagem
+
+Além disso, quando fizermos uma remoção, é importante colocar um elemento simbólico no lugar para garantir que uma próxima busca possa passar ali e checar o elemento seguinte.
+
+------ imagem
+
 ### 3.2.2 Hashing duplo
 
+Uma segunda função hash, que encontra uma posição pra um elemento caso haja uma colisão.
+...................
 
 
 ### 4. Anotações para atualizações posteriores
