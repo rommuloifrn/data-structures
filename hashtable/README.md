@@ -60,15 +60,32 @@ Dessa forma, nosso algoritmo de pesquisa vai precisar iterar sobre todos os elem
 
 ### 3.2.1 Linear probing
 
-Linear probing consiste em deslocar o elemento para o índice seguinte.
+Linear probing consiste em deslocar o elemento para o índice seguinte. Retomando o exemplo da imagem do item 3:
+
+![alt text](image-11.png)
+
+E então nossa busca precisa passar por todos os espaços preenchidos até achar um elemento vazio.
+
+Mas há um problema aí. Vamos considerar o seguinte: Inserimos o número 26 na tabela, que também depois da função de hashing acaba caindo no índice 2. Depois, por algum motivo, removemos o elemento 14.
+
+![alt text](image-12.png)
+
+Até aí tudo bem, NÉ?. Mas vamos fazer uma pesquisa pelo número 26:
+
+![alt text](image-13.png)
+
+O "buraco" que deixamos ao remover o número 14 faz com que não consigamos chegar no 26, que foi posto na "mesma posição" mas que agora não pode ser acessado. Você pode até dizer que é só procurarmos no resto do array, mas isso torna a complexidade temporal da busca O(N), fazendo com que nossa implementação vire basicamente uma lista ligada...
+
+--- imagem?
+
+A solução pra o problema do buraco é, quando fizermos uma remoção, utilizarmos um símbolo, que indica que ali é um espaço vazio, mas que o próximo elemento deve ser conferido também. Coleguinha chama esse símbolo de "AVAILABLE".
 
 ------ imagem
+
+Ufa! Temos uma tabela hash com linear probing funcional. Vamos adicionar mais alguns elementos:
+.......................................................... IMAGEM
 
 Até aí tudo bem, porém surge um problema: Com o tempo, a busca <u>degenera</u>. Imagine que, se você sempre trata a colisão deslocando um elemento pra esquerda, <u>a busca pode precisar checar todos os elementos seguintes até achar a chave pesquisada.</u> Pra evitar isso, precisamos garantir que o array não fique muito cheio, sempre mantendo o preenchimento abaixo de 50% aumentando o tamanho.
-
------- imagem
-
-Além disso, quando fizermos uma remoção, é importante colocar um elemento simbólico no lugar para garantir que uma próxima busca possa passar ali e checar o elemento seguinte.
 
 ------ imagem
 

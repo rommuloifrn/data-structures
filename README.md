@@ -2,10 +2,15 @@
 
 ![](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 
-Aqui estão as implementações dos TADs (Tipo Abstrato de Dados) feitas na matéria Estruturas de Dados. <br>
-Cada pacote é uma implementação, com uma classe Main que provê uma pequena interface CLI com as operações possíveis dentro daquela estrutura.
+Olá. Aqui estão minhas implementações de estruturas de dados baseadas nas aulas de Coleguinha.
 
-Navegue abaixo pelos TADs:
+Cada pacote é uma estrutura de dados, com uma classe Main que provê uma pequena interface CLI com as operações possíveis dentro daquela implementação. Estou trabalhando em escrever um tutorial interessante pra cada uma delas.
+
+Implementações com texto auxiliar:
+
+- [Tabela Hash](hashtable/HashTable.java)
+
+Demais implementações:
 
 - [Pilha rubro negra](redblackpile/RBPile.java) (array)
 - [Pilha](llpile/Pile.java) (lista ligada)
