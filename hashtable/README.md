@@ -1,6 +1,7 @@
 # Hashtable (tabela de dispersão)
 
 Índice:
+
 - A função de dispersão (hash)
 - Inserção
 - Lidando com colisões: Linear Probing
@@ -8,16 +9,13 @@
 
 A hashtable é uma implementação do dicionário, que por meio de uma <b>função de dispersão</b> consegue dispôr os elementos na lista de forma "aleatória", mantendo a complexidade temporal da pesquisa em O(1).
 
-A ideia é que, usando um array, a função de dispersão defina a posição do elemento sendo inserido. Como essa posição é calculada (O(1)), a pesquisa usando a mesma chave vai chamar a função de dispersão e acessar direto o endereço do elemento no array, em tempo constante.
-
+A ideia é que, usando um array, a função de dispersão defina a posição do elemento sendo inserido. Como essa posição é calculada em (O(1)), a pesquisa usando a mesma chave vai chamar a função de dispersão e acessar direto o endereço do elemento no array, em tempo constante.
 
 ## 1. A função de dispersão
 
 A função de dispersão precisa levar em conta o tamanho do array, caso contrário ela pode usar somente parte do array (o que levaria a mais <u>colisões</u>) ou fazer inserções em endereços que estão fora da área de memória.
 
 Uma função de dispersão comum seria h(x) = x%tamanhoDoArray.
-
-
 
 ## 2. Inserção
 
@@ -33,8 +31,6 @@ Como a posição do número no array vai depender do resto da divisão dele por 
 
 Mas vez ou outra o resultado da função hash pra um elemento vai ser uma posição que já está ocupada, e temos que resolver isso de alguma forma.
 
-
-
 ## 3. Lidando com colisões
 
 Vamos pegar o exemplo do item 2 e adicionar o número <b>14</b>.
@@ -48,7 +44,6 @@ Ooops, ocupado. Há duas formas mais comuns de lidar com colisões:
 Uma forma simples de resolver o problema das colisões é armazenar os itens numa sequência (lista, array). Você pode desde o início usar um array de listas ligadas, por exemplo. No meu caso, eu criei um objeto "Elemento" que vai armazenar o valor do elemento e uma referência para o próximo elemento naquele endereço, caso haja um.
 
 Vejamos:
-
 
 ![alt text](image-9.png)
 
@@ -74,18 +69,48 @@ Até aí tudo bem, NÉ?. Mas vamos fazer uma pesquisa pelo número 26:
 
 ![alt text](image-13.png)
 
-O "buraco" que deixamos ao remover o número 14 faz com que não consigamos chegar no 26, que foi posto na "mesma posição" mas que agora não pode ser acessado. Você pode até dizer que é só procurarmos no resto do array, mas isso torna a complexidade temporal da busca O(N), fazendo com que nossa implementação vire basicamente uma lista ligada...
+O "buraco" que deixamos ao remover o número 14 faz com que não consigamos chegar no 26, que foi posto na "mesma posição" mas que agora não pode ser acessado. Você pode até dizer que é só procurarmos no resto do array, mas isso torna a complexidade temporal da busca O(N), fazendo com que nossa implementação vire basicamente uma lista ligada:
 
---- imagem?
+![](article-imgs/2024-09-28-23-53-27-image.png)
 
 A solução pra o problema do buraco é, quando fizermos uma remoção, utilizarmos um símbolo, que indica que ali é um espaço vazio, mas que o próximo elemento deve ser conferido também. Coleguinha chama esse símbolo de "AVAILABLE".
 
------- imagem
+![](article-imgs/2024-09-28-23-59-19-image.png)
 
-Ufa! Temos uma tabela hash com linear probing funcional. Vamos adicionar mais alguns elementos:
-.......................................................... IMAGEM
+Ufa! Temos uma tabela hash com linear probing funcional. O objeto AVAILABLE simboliza que aquele índice pode ser passado numa pesquisa, mas que também está disponível (no inglês, available) para inserção.
 
-Até aí tudo bem, porém surge um problema: Com o tempo, a busca <u>degenera</u>. Imagine que, se você sempre trata a colisão deslocando um elemento pra esquerda, <u>a busca pode precisar checar todos os elementos seguintes até achar a chave pesquisada.</u> Pra evitar isso, precisamos garantir que o array não fique muito cheio, sempre mantendo o preenchimento abaixo de 50% aumentando o tamanho.
+Porém, eu não gosto dessa abordagem. Pra usar ela, o tipo do atributo que usamos como chave para nossos valores na table precisa ser Object, e isso não é tão limpo: generalizar o tipo de todo um conjunto pra satisfazer uma condição excepcional.
+
+........ COMO EU AINDA NÃO CITEI TAMANHO MÁXIMO DO ARRAY, É BOM DEIXAR ESSA PARTE PRA MAIS PRA FRENTE.
+
+.....TAMBÉ LEMBRAR DE CITAR QUE É NECESSÁRIO CHECAR O ELEMENTO DO INDÍCE ATUAL CONTRA O SIMBOLO AVAILABLE.
+
+Acho mais interesante usarmos a seguinte opção: O nosso "available" será um número que não poderemos usar. O ideal pra isso é o número máximo que o tipo do atributo da chave suportar. Como uso **int**, nosso símbolo de available será o número 2 147 483 647. Em java, podemos acessar esse valor por meio de 
+
+```java
+Integer.MAX_VALUE
+```
+
+Logo, nosso exemplo ficaria assim:
+
+![](article-imgs/2024-09-29-00-11-37-image.png)
+
+Vamos adicionar mais alguns elementos:
+
+
+![](article-imgs/2024-09-29-00-41-25-image.png)
+
+Note que a tabela é circular.
+
+
+
+
+
+Talvez você tenha sacado que há um problema: Com o tempo, a busca <u>degenera</u>. Imagine que, se você sempre trata a colisão deslocando um elemento pra direita, <u>a busca pode precisar checar todos os elementos seguintes até achar a chave pesquisada</u>, ou mesmo simplesmente constatar que ela não está na tabela. 
+
+
+
+Pra evitar isso, precisamos garantir que o array não fique muito cheio, sempre mantendo o preenchimento abaixo de 50% aumentando o tamanho.
 
 ------ imagem
 
@@ -93,7 +118,6 @@ Até aí tudo bem, porém surge um problema: Com o tempo, a busca <u>degenera</u
 
 Uma segunda função hash, que encontra uma posição pra um elemento caso haja uma colisão.
 ...................
-
 
 ### 4. Anotações para atualizações posteriores
 
