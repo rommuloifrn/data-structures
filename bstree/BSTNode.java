@@ -2,30 +2,31 @@ package bstree;
 
 public class BSTNode {
     private Object element;
-    private BSTNode daddy;
+    private BSTNode parent;
     private BSTNode leftChild;
     private BSTNode rightChild;
 
-    public BSTNode(Object element, BSTNode leftChild, BSTNode rightChild) {
-        this.daddy = null;
+    public BSTNode(Object element, BSTNode leftChild, BSTNode rightChild, BSTNode parent) {
+        this.parent = parent;
         this.element = element;
         this.leftChild = leftChild;
         this.rightChild = rightChild;
     }
 
-    public BSTNode(Object element, BSTNode leftChild, BSTNode rightChild, BSTNode daddy) {
-        this.daddy = daddy;
-        this.element = element;
-        this.leftChild = leftChild;
-        this.rightChild = rightChild;
+    public boolean isRoot() {
+        return this.parent == null;
+    }
+
+    public BSTNode getParent() {
+        return this.parent;
     }
 
     public boolean hasLeftChild() {
-        return leftChild != null;
+        return leftChild.getElement() != null;
     }
 
     public boolean hasRightChild() {
-        return rightChild != null;
+        return rightChild.getElement() != null;
     }
 
     public BSTNode getLeftChild() {
@@ -54,5 +55,9 @@ public class BSTNode {
 
     public String toString() {
         return String.format("%s (l: %s, r: %s)", getElement(), getLeftChild().getElement(), getRightChild().getElement());
+    }
+
+    public void setParent(BSTNode parent) {
+        this.parent = parent;
     }
 }
