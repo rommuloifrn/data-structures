@@ -76,6 +76,22 @@ public class BSTree {
             preOrder(node.getRightChild(), operator);
     }
 
+    private BSTNode marchelo(BSTNode node) {
+        if (isEmpty())
+            return null;
+
+        if (node.getLeftChild().getElement() != null)
+            return marchelo(node.getLeftChild());
+
+        if (isExternal(node))
+            return node;
+
+        if (node.getRightChild().getElement() != null)
+            return marchelo(node.getRightChild());
+
+        return null;
+    }
+
     public void insert(Integer k) {
         if (isEmpty()) {
             root.setElement(k);
@@ -104,32 +120,38 @@ public class BSTree {
     }
 
     public BSTNode find(Integer k) {
-        if (isEmpty()) return null;
-        
+        if (isEmpty())
+            return null;
+
         BSTNode target = this.root;
 
-            while (target.getElement() != null) {
-                if (target.getElement() == k) return target;
-                
-                // acessa o nó mas nunca seu elemento, portanto nao vai dar erro. O null é tratado pela condição do while
-                if ((int) target.getElement() < k)
-                    target = target.getRightChild();
-                else if ((int) target.getElement() > k)
-                    target = target.getLeftChild();
-            }
+        while (target.getElement() != null) {
+            if (target.getElement() == k)
+                return target;
+
+            // acessa o nó mas nunca seu elemento, portanto nao vai dar erro. O null é
+            // tratado pela condição do while
+            if ((int) target.getElement() < k)
+                target = target.getRightChild();
+            else if ((int) target.getElement() > k)
+                target = target.getLeftChild();
+        }
 
         return null;
     }
 
     public BSTNode remove(Integer k) {
         BSTNode node = find(k);
-        if (node == null) return null;
-
+        if (node == null)
+            return null;
 
         if (node == root) {
             BSTNode aux = new BSTNode(root.getElement(), root.getLeftChild(), root.getRightChild(), null);
 
-            
+            if (node.hasLeftChild()) {
+
+            }
+
             root.setLeftChild(null);
             root.setRightChild(null);
             root.setElement(null);
@@ -139,33 +161,61 @@ public class BSTree {
 
         BSTNode parent = node.getParent();
 
-        if (node == parent.getLeftChild()) { // caso seja filho esquerdo, desce para o filho direito e faz inOrder pra esquerda
-            // caso seja filho esquerdo e a posição for simples
-            node.getLeftChild().setParent(parent);
-            parent.setLeftChild(node.getLeftChild());
+        if (node == parent.getLeftChild()) { // caso seja filho esquerdo, desce para o filho direito e faz inOrder pra
+                                             // esquerda
+
+            if (node.hasRightChild()) {
+                BSTNode sucessor = marchelo(node.getRightChild());
+
+                // pega o elemento do sucessor e coloca no node a ser removido
+                node.setElement(sucessor.getElement());
+
+                // limpa o elemento do sucessor e desengata ele dos filhos
+                sucessor.setElement(null);
+                sucessor.setLeftChild(null);
+                sucessor.setRightChild(null);
+            } else { // caso excluido nao tenha filho direito
+                BSTNode leftChild = node.getLeftChild();
+                parent.setLeftChild(leftChild);
+                leftChild.setParent(parent);
+            }
 
         } else if (node == parent.getRightChild()) {
-            node.getRightChild().setParent(parent);
-            parent.setRightChild(node.getRightChild());
+            System.out.println("fuck!!!");
 
+            if (node.hasLeftChild()) {
+                BSTNode sucessor = marchelo(node.getRightChild());
+
+                // pega o elemento do sucessor e coloca no node a ser removido
+                node.setElement(sucessor.getElement());
+
+                // limpa o elemento do sucessor e desengata ele dos filhos
+                sucessor.setElement(null);
+                sucessor.setLeftChild(null);
+                sucessor.setRightChild(null);
+            } else { // caso excluido nao tenha filho esquerdo
+                BSTNode rightChild = node.getRightChild();
+                parent.setRightChild(rightChild);
+                rightChild.setParent(parent);
+            }
         }
 
         return node;
     }
 
     public boolean isInternal(BSTNode node) {
-        return node.getLeftChild().getElement()!=null || node.getRightChild().getElement() != null;
+        return node.getLeftChild().getElement() != null || node.getRightChild().getElement() != null;
     }
 
     public boolean isExternal(BSTNode node) {
-        return node.getLeftChild().getElement()==null && node.getRightChild().getElement() == null;
+        return node.getLeftChild().getElement() == null && node.getRightChild().getElement() == null;
     }
 
     public BSTNode root() {
         return root;
     }
 
-    public BSTNode parent(BSTNode node) { 
+    public BSTNode parent(BSTNode node) {
         return node.getParent();
     }
 
@@ -183,18 +233,21 @@ public class BSTree {
     }
 
     public Integer depth(BSTNode node) {
-        if (node.isRoot()) return 0;
+        if (node.isRoot())
+            return 0;
 
         return 1 + depth(node.getParent());
     }
 
     public Integer height(BSTNode node) {
-        if (isExternal(node)) return 0;
+        if (isExternal(node))
+            return 0;
 
         int leftDepth = depth(node.getLeftChild());
         int rightDepth = depth(node.getRightChild());
 
-        if (leftDepth > rightDepth) return leftDepth;
+        if (leftDepth > rightDepth)
+            return leftDepth;
         return rightDepth;
     }
 }
