@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class BSTree {
-    private BSTNode root;
+    protected BSTNode root;
 
     public BSTree() {
         this.root = new BSTNode(null, null, null, null);
