@@ -208,7 +208,12 @@ public class BSTree {
     }
 
     public boolean isExternal(BSTNode node) {
-        return node.getLeftChild().getElement() == null && node.getRightChild().getElement() == null;
+        if (node.getElement() == null) return false;
+
+        Object leftElement = node.getLeftChild().getElement();
+        Object rightElement = node.getRightChild().getElement();
+
+        return leftElement == null && rightElement == null;
     }
 
     public BSTNode root() {
@@ -233,6 +238,8 @@ public class BSTree {
     }
 
     public Integer depth(BSTNode node) {
+        if (root.getElement() == null) return 0;
+
         if (node.isRoot())
             return 0;
 
@@ -240,14 +247,17 @@ public class BSTree {
     }
 
     public Integer height(BSTNode node) {
-        if (isExternal(node))
+        if (node == null || node.getElement() == null)
             return 0;
+        if (isExternal(node)) return 0;
 
-        int leftDepth = depth(node.getLeftChild());
-        int rightDepth = depth(node.getRightChild());
+        int leftHeight = height(node.getLeftChild());
+        int rightHeight = height(node.getRightChild());
 
-        if (leftDepth > rightDepth)
-            return leftDepth;
-        return rightDepth;
+        if (leftHeight > rightHeight){
+            return 1 + leftHeight;
+        }
+            
+        return 1 + rightHeight;
     }
 }

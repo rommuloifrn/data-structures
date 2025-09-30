@@ -12,6 +12,7 @@ public class Main {
             System.out.println("Opções\n");
             System.out.println("1: Inserção\n2: Busca\n3: Remoção\n");
             tree.Show();
+            System.out.println(String.format("altura: %d", tree.height(tree.root())));
             switch (sc.nextInt()) {
                 case 1:
                     System.out.println("Digite o elemento a ser adicionado:\n");
