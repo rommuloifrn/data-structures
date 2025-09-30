@@ -19,7 +19,7 @@ public class BSTree {
                 new BSTNode(null, null, null, root), null);
     }
 
-    public void Show() {
+    public void Show() { // dá pra melhorar isso calculando padding
         System.out.println(String.format("criando com altura %d e tamanho %d", height(root), nodesList().size()));
         Object[][] matrix = new Object[height(root)+1][nodesList().size()];
 
@@ -33,12 +33,12 @@ public class BSTree {
         });
 
         for(int i=0; i<matrix.length; i++) {
-            System.out.print("[");
+            System.out.print("");
             for (int j=0; j<matrix[i].length; j++) {
-                if (matrix[i][j] == null) System.out.print("  ");
-                else System.out.print(matrix[i][j]);
+                if (matrix[i][j] == null) System.out.print("\t");
+                else System.out.print("\t"+matrix[i][j]);
             }
-            System.out.print("]\n");
+            System.out.print("\n");
         }
     }
 
