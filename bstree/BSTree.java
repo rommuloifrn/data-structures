@@ -20,8 +20,26 @@ public class BSTree {
     }
 
     public void Show() {
-        System.out.println(this.nodesList());
-        // TODO
+        System.out.println(String.format("criando com altura %d e tamanho %d", height(root), nodesList().size()));
+        Object[][] matrix = new Object[height(root)+1][nodesList().size()];
+
+        List<BSTNode> nodes = nodesList();
+
+        nodes.forEach((node)->{
+            int nodeDepth = depth(node);
+            int indexInInOrder = nodesListInOrder().indexOf(node);
+            //System.out.println(String.format("nodeDepth: %d, indexInOrder: %d", nodeDepth, indexInInOrder));
+            matrix[nodeDepth][indexInInOrder] = node.getElement();
+        });
+
+        for(int i=0; i<matrix.length; i++) {
+            System.out.print("[");
+            for (int j=0; j<matrix[i].length; j++) {
+                if (matrix[i][j] == null) System.out.print("  ");
+                else System.out.print(matrix[i][j]);
+            }
+            System.out.print("]\n");
+        }
     }
 
     public boolean isEmpty() {
@@ -42,6 +60,16 @@ public class BSTree {
         List<BSTNode> list = new ArrayList<BSTNode>();
 
         preOrder(root, (n) -> {
+            list.add(n);
+        });
+
+        return list;
+    }
+
+    public List<BSTNode> nodesListInOrder() {
+        List<BSTNode> list = new ArrayList<BSTNode>();
+
+        inOrder(root, (n) -> {
             list.add(n);
         });
 
@@ -73,7 +101,7 @@ public class BSTree {
         operator.operation(node);
 
         if (node.getRightChild().getElement() != null)
-            preOrder(node.getRightChild(), operator);
+            inOrder(node.getRightChild(), operator);
     }
 
     private BSTNode marchelo(BSTNode node) {
